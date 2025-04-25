@@ -1,0 +1,20 @@
+{
+    "name": "ui5.mstt",
+    "version": "1.0.0",
+    "description": "UI5 TypeScript MSTT",
+    "scripts": {
+        "start": "ui5 serve -o index.html",
+        "build": "ui5 build --all --clean-dest",
+        "serve-dist": "ws --compress -d dist --open"
+    },
+    "devDependencies": {
+        "@types/openui5": "^1.134.0",
+        "@ui5/ts-interface-generator": "^0.10.0",
+        "local-web-server": "^5.4.0",
+        "typescript": "^5.8.3",
+        "ui5-middleware-livereload": "^3.1.1",
+        "ui5-middleware-serveframework": "^3.5.0",
+        "ui5-middleware-simpleproxy": "^3.4.1",
+        "ui5-tooling-transpile": "^3.7.5"
+    }
+}
