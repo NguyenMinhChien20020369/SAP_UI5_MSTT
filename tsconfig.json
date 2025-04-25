@@ -14,7 +14,12 @@
             "ui5/walkthrough/*": [
                 "webapp/*"
             ]
-        }
+        },
+        "typeRoots": [
+            "./webapp/types",
+            "./node_modules/@types",
+            "./node_modules/@sapui5"
+        ]
     },
     "include": [
         "webapp/**/*"

@@ -3,10 +3,11 @@ metadata:
   name: ui5.mstt
 type: application
 framework:
-  name: OpenUI5
+  name: SAPUI5
   version: "1.135.0"
   libraries:
     - name: sap.m
+    - name: sap.ui.comp
     - name: sap.ui.core
     - name: themelib_sap_horizon
 builder:

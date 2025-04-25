@@ -1,0 +1,77 @@
+{
+    "PRCollection": [
+        {
+            "PRId": "100000061",
+            "Date": "07/03/2024",
+            "MaGMS": "GMS25.03.2025",
+            "Goods": "Máy tính",
+            "PRType": "Z2",
+            "Quantity": "20",
+            "Unit": "PC"
+        },
+        {
+            "PRId": "100000062",
+            "Date": "07/03/2024",
+            "MaGMS": "GMS25.03.2025",
+            "Goods": "Máy tính",
+            "PRType": "Z2",
+            "Quantity": "20",
+            "Unit": "PC"
+        },
+        {
+            "PRId": "100000063",
+            "Date": "07/03/2024",
+            "MaGMS": "GMS25.03.2025",
+            "Goods": "Máy tính",
+            "PRType": "Z2",
+            "Quantity": "20",
+            "Unit": "PC"
+        }
+    ],
+    "PRIds": [
+        {
+            "key": "100000061",
+            "name": "100000061"
+        },
+        {
+            "key": "100000062",
+            "name": "100000062"
+        },
+        {
+            "key": "100000063",
+            "name": "100000063"
+        }
+    ],
+    "ProductCategories": [
+        {
+            "key": "Accessory",
+            "name": "Accessory"
+        },
+        {
+            "key": "Graphics Card",
+            "name": "Graphics Card"
+        },
+        {
+            "key": "Laptop",
+            "name": "Laptop"
+        },
+        {
+            "key": "Projector",
+            "name": "Projector"
+        }
+    ],
+    "ProductSuppliers": [
+        {
+            "key": "Titanium",
+            "name": "Titanium"
+        },
+        {
+            "key": "Technocom",
+            "name": "Technocom"
+        },
+        {
+            "key": "Red Point Stores",
+            "name": "Red Point Stores"
+        }
+    ]
+}

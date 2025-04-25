@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="ui5.mstt.controller.App"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+>
+    <Shell>
+        <App
+            class="myAppMSTT"
+            id="app"
+        />
+    </Shell>
+</mvc:View>
