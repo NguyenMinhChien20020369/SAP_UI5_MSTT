@@ -5,7 +5,7 @@ export default {
     init: function () {
         // create
         const mockServer = new MockServer({
-            rootUri: sap.ui.require.toUrl("ui5/mstt/V2/Northwind/Northwind.svc/")
+            rootUri: sap.ui.require.toUrl("sap/opu/odata/sap/ZODATA_MSTT_SP1_SRV")
         });
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -16,9 +16,9 @@ export default {
             autoRespondAfter: parseInt(urlParams.get("serverDelay") || "500")
         });
 
-        // simulate
-        const path = sap.ui.require.toUrl("ui5/mstt/localService");
-        mockServer.simulate(path + "/metadata.xml", path + "/mockdata");
+        // // simulate
+        // const path = sap.ui.require.toUrl("ui5/mstt/localService");
+        // mockServer.simulate(path + "/metadata.xml", path + "/mockdata");
 
         // start
         mockServer.start();

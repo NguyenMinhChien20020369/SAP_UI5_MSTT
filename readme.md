@@ -32,6 +32,7 @@ ui5 add sap.m
 npm i -D ui5-middleware-simpleproxy
 npm install @ui5/ts-interface-generator --save-dev
 npm i -D local-web-server
+npm install fiori-tools @sap/ux-ui5-tooling
 --------------------------------ui5.yaml
 builder:
   customTasks:

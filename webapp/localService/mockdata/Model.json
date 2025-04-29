@@ -12,7 +12,7 @@
         {
             "PRId": "100000062",
             "Date": "07/03/2024",
-            "MaGMS": "GMS25.03.2025",
+            "MaGMS": "GMS26.03.2025",
             "Goods": "Máy tính",
             "PRType": "Z2",
             "Quantity": "20",
@@ -21,7 +21,7 @@
         {
             "PRId": "100000063",
             "Date": "07/03/2024",
-            "MaGMS": "GMS25.03.2025",
+            "MaGMS": "GMS27.03.2025",
             "Goods": "Máy tính",
             "PRType": "Z2",
             "Quantity": "20",
@@ -42,22 +42,18 @@
             "name": "100000063"
         }
     ],
-    "ProductCategories": [
+    "MaGMSs": [
         {
-            "key": "Accessory",
-            "name": "Accessory"
+            "key": "GMS25.03.2025",
+            "name": "GMS25.03.2025"
         },
         {
-            "key": "Graphics Card",
-            "name": "Graphics Card"
+            "key": "GMS26.03.2025",
+            "name": "GMS26.03.2025"
         },
         {
-            "key": "Laptop",
-            "name": "Laptop"
-        },
-        {
-            "key": "Projector",
-            "name": "Projector"
+            "key": "GMS27.03.2025",
+            "name": "GMS27.03.2025"
         }
     ],
     "ProductSuppliers": [

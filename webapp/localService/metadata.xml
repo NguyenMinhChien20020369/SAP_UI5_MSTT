@@ -1,29 +1,832 @@
-<edmx:Edmx Version="1.0"
-	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
-	<edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0"
-		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-		<Schema Namespace="NorthwindModel"
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZODATA_MSTT_SP1_SRV" xml:lang="en" sap:schema-version="1"
 			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-			<EntityType Name="Model">
+			<EntityType Name="PRList" sap:content-version="1">
 				<Key>
-					<PropertyRef Name="ProductName"/>
-					<PropertyRef Name="Quantity"/>
-					<PropertyRef Name="ShipperName"/>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Banfn" />
+					<PropertyRef Name="Bnfpo" />
 				</Key>
-				<Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true"/>
-				<Property Name="Quantity" Type="Edm.Int16" Nullable="false"/>
-				<Property Name="ExtendedPrice" Type="Edm.Decimal" Precision="19" Scale="4"/>
-				<Property Name="ShipperName" Type="Edm.String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true"/>
-				<Property Name="ShippedDate" Type="Edm.DateTime"/>
-				<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true"/>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Banfn" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Purchase Req." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Bnfpo" Type="Edm.String" Nullable="false" MaxLength="5"
+					sap:unicode="false" sap:label="Requisn. item" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Bsart" Type="Edm.String" Nullable="false" MaxLength="4"
+					sap:unicode="false" sap:label="Document Type" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Erdat" Type="Edm.DateTime" Nullable="false" Precision="7"
+					sap:unicode="false" sap:label="Changed On" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Txz01" Type="Edm.String" Nullable="false" MaxLength="40"
+					sap:unicode="false" sap:label="Short Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Menge" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Char20" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3"
+					sap:unicode="false" sap:label="3-Byte field" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9"
+					sap:unicode="false" sap:label="Material Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Ekgrp" Type="Edm.String" Nullable="false" MaxLength="3"
+					sap:unicode="false" sap:label="Purch. Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Wgbez" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="StartDate" Type="Edm.DateTime" Nullable="false" Precision="7"
+					sap:unicode="false" sap:label="Ngày bắt đầu báo giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="EndDate" Type="Edm.DateTime" Nullable="false" Precision="7"
+					sap:unicode="false" sap:label="Ngày kết thúc BG" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Tình trạng GMS" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
+				<Property Name="Substatus" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Sub status GMS" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" />
 			</EntityType>
-		</Schema>
-		<Schema Namespace="ODataWebV2.Northwind.Model"
-			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-			<EntityContainer Name="NorthwindEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true"
-				xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
-				<EntitySet Name="Model" EntityType="NorthwindModel.Model"/>
+			<EntityType Name="PRHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tengms" Type="Edm.String" Nullable="false" MaxLength="50"
+					sap:unicode="false" sap:label="Tên gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<NavigationProperty Name="ToPRList"
+					Relationship="ZODATA_MSTT_SP1_SRV.PRHeaderToPRList"
+					FromRole="FromRole_PRHeaderToPRList" ToRole="ToRole_PRHeaderToPRList" />
+			</EntityType>
+			<EntityType Name="HtmsMd" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Id" />
+				</Key>
+				<Property Name="Loaiht" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Character Field with Length 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" />
+				<Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50"
+					sap:unicode="false" sap:label="Explanation" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="AttachFile" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="ObjectKey" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ObjectKey" Type="Edm.String" Nullable="false" MaxLength="32"
+					sap:unicode="false" sap:label="GUID 16" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="FolderType" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Loại hồ sơ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Filename" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="File Name" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="Attac.MIME Type" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateDate" Type="Edm.DateTime" Nullable="false" Precision="7"
+					sap:unicode="false" sap:label="Ngày tạo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateTime" Type="Edm.Time" Nullable="false" Precision="0"
+					sap:unicode="false" sap:label="Giờ tạo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateBy" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Người tạo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="InitMT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ParticiUnit" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Đơn vị tham gia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateGms" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Khởi tạo gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="BuildRequire" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Xây dựng đầu bài" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign3" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign4" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign5" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 5" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign6" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 6" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign7" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 7" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign8" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 8" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign9" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 9" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign10" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 10" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Announce" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Thông báo chào giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="CddpMT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ParticiUnit" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Đơn vị tham gia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="OpenFolder" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Mở hồ sơ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Supervisor" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Chứng kiến mở hồ sơ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Score" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Chấm điểm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tdkq" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Trình duyệt kết quả" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign3" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign4" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign5" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 5" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign6" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 6" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign7" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 7" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign8" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 8" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign9" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 9" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign10" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 10" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="Cddp2MT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ParticiUnit" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Đơn vị tham gia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="OpenFolder" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Mở hồ sơ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Supervisor" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Chứng kiến mở hồ sơ" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Score" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Chấm điểm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tdkq" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Trình duyệt kết quả" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign3" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign4" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign5" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 5" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign6" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 6" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign7" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 7" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign8" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 8" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign9" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 9" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign10" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 10" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="CnccMT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ParticiUnit" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Đơn vị tham gia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tdncc" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Trình duyệtTDNCC" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign3" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign4" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign5" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 5" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign6" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 6" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign7" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 7" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign8" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 8" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign9" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 9" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign10" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 10" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Gdtt" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Giám đốc trung tâm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Gdk" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Giám đốc khối" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tgd" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Tổng giám đốc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="HdMT" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="ParticiUnit" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Đơn vị tham gia" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateHd" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Khởi tạo hợp đồng" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign3" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 3" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign4" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 4" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign5" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 5" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign6" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 6" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign7" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 7" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign8" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 8" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign9" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 9" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="SubSign10" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Đồng thuận 10" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve1" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Approve2" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Phê duyệt cấp 2" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="MTHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<NavigationProperty Name="ToInitMT"
+					Relationship="ZODATA_MSTT_SP1_SRV.MTHeaderToInitMT"
+					FromRole="FromRole_MTHeaderToInitMT" ToRole="ToRole_MTHeaderToInitMT" />
+				<NavigationProperty Name="ToCddpMT"
+					Relationship="ZODATA_MSTT_SP1_SRV.MTHeaderToCddpMT"
+					FromRole="FromRole_MTHeaderToCddpMT" ToRole="ToRole_MTHeaderToCddpMT" />
+				<NavigationProperty Name="ToCddp2MT"
+					Relationship="ZODATA_MSTT_SP1_SRV.MTHeaderToCddp2MT"
+					FromRole="FromRole_MTHeaderToCddp2MT" ToRole="ToRole_MTHeaderToCddp2MT" />
+				<NavigationProperty Name="ToCnccMT"
+					Relationship="ZODATA_MSTT_SP1_SRV.MTHeaderToCnccMT"
+					FromRole="FromRole_MTHeaderToCnccMT" ToRole="ToRole_MTHeaderToCnccMT" />
+				<NavigationProperty Name="ToHdMT" Relationship="ZODATA_MSTT_SP1_SRV.MTHeaderToHdMT"
+					FromRole="FromRole_MTHeaderToHdMT" ToRole="ToRole_MTHeaderToHdMT" />
+			</EntityType>
+			<EntityType Name="Tline" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="Manhomcv" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Manhomcv" Type="Edm.String" Nullable="false" MaxLength="1"
+					sap:unicode="false" sap:label="Mã nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tennhomcv" Type="Edm.String" Nullable="false" MaxLength="60"
+					sap:unicode="false" sap:label="Tên nhóm công việc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Begda" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Start Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Endda" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="End Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="UploadTemp" m:HasStream="true" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+					<PropertyRef Name="ObjectKey" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="16"
+					sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="ObjectKey" Type="Edm.String" Nullable="false" MaxLength="32"
+					sap:unicode="false" sap:label="Character field, length 32" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Filename" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="File Name" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="Content" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="Attach. Contents" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="Attac.MIME Type" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="GMSHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Tengms" Type="Edm.String" Nullable="false" MaxLength="50"
+					sap:unicode="false" sap:label="Tên gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateDate" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Ngày tạo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CreateBy" Type="Edm.String" Nullable="false" MaxLength="12"
+					sap:unicode="false" sap:label="Người tạo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="StartDate" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Ngày bắt đầu báo giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="StartTime" Type="Edm.String" Nullable="false" MaxLength="8"
+					sap:unicode="false" sap:label="Giờ bắt đầu báo giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="EndDate" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Ngày kết thúc BG" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="EndTime" Type="Edm.String" Nullable="false" MaxLength="8"
+					sap:unicode="false" sap:label="Giờ đóng báo giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Tình trạng GMS" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Substatus" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Sub status GMS" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="PrQuantity" Type="Edm.String" Nullable="false" MaxLength="3"
+					sap:unicode="false" sap:label="Số lượng PR" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="CancelText" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="CANCEL_TEXT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+				<Property Name="ChangeText" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="CHANGE_TEXT" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="MatklList" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Matkl" />
+				</Key>
+				<Property Name="Matkl" Type="Edm.String" Nullable="false" MaxLength="9"
+					sap:unicode="false" sap:label="Material Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Wgbez" Type="Edm.String" Nullable="false" MaxLength="20"
+					sap:unicode="false" sap:label="Matl Grp Desc." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="MeinsList" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Meins" />
+				</Key>
+				<Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3"
+					sap:unicode="false" sap:label="3-Byte field" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Mseht" Type="Edm.String" Nullable="false" MaxLength="10"
+					sap:unicode="false" sap:label="Meas. Unit Text" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<EntityType Name="TlineHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false" />
+				<NavigationProperty Name="ToPRList"
+					Relationship="ZODATA_MSTT_SP1_SRV.TlineHeaderToPRList"
+					FromRole="FromRole_TlineHeaderToPRList" ToRole="ToRole_TlineHeaderToPRList" />
+				<NavigationProperty Name="ToTline"
+					Relationship="ZODATA_MSTT_SP1_SRV.TlineHeaderToTline"
+					FromRole="FromRole_TlineHeaderToTline" ToRole="ToRole_TlineHeaderToTline" />
+				<NavigationProperty Name="ToHtms"
+					Relationship="ZODATA_MSTT_SP1_SRV.TlineHeaderToHtms"
+					FromRole="FromRole_TlineHeaderToHtms" ToRole="ToRole_TlineHeaderToHtms" />
+			</EntityType>
+			<EntityType Name="Htms" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Magms" />
+				</Key>
+				<Property Name="Magms" Type="Edm.String" Nullable="false" MaxLength="15"
+					sap:unicode="false" sap:label="Mã gói mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="HtmsC" Type="Edm.String" Nullable="false" MaxLength="30"
+					sap:unicode="false" sap:label="Hình thức mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Hscg" Type="Edm.String" Nullable="false" MaxLength="30"
+					sap:unicode="false" sap:label="HT Mở hồ sơ chào giá" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Ptms" Type="Edm.String" Nullable="false" MaxLength="30"
+					sap:unicode="false" sap:label="Phương thức mua sắm" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+				<Property Name="Note" Type="Edm.String" Nullable="false" sap:unicode="false"
+					sap:label="NOTE" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" />
+			</EntityType>
+			<Association Name="PRHeaderToPRList" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.PRHeader" Multiplicity="1"
+					Role="FromRole_PRHeaderToPRList" />
+				<End Type="ZODATA_MSTT_SP1_SRV.PRList" Multiplicity="*"
+					Role="ToRole_PRHeaderToPRList" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_PRHeaderToPRList">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_PRHeaderToPRList">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="MTHeaderToInitMT" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.MTHeader" Multiplicity="1"
+					Role="FromRole_MTHeaderToInitMT" />
+				<End Type="ZODATA_MSTT_SP1_SRV.InitMT" Multiplicity="*"
+					Role="ToRole_MTHeaderToInitMT" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_MTHeaderToInitMT">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_MTHeaderToInitMT">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="MTHeaderToCddpMT" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.MTHeader" Multiplicity="1"
+					Role="FromRole_MTHeaderToCddpMT" />
+				<End Type="ZODATA_MSTT_SP1_SRV.CddpMT" Multiplicity="*"
+					Role="ToRole_MTHeaderToCddpMT" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_MTHeaderToCddpMT">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_MTHeaderToCddpMT">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="MTHeaderToCddp2MT" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.MTHeader" Multiplicity="1"
+					Role="FromRole_MTHeaderToCddp2MT" />
+				<End Type="ZODATA_MSTT_SP1_SRV.Cddp2MT" Multiplicity="*"
+					Role="ToRole_MTHeaderToCddp2MT" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_MTHeaderToCddp2MT">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_MTHeaderToCddp2MT">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="MTHeaderToCnccMT" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.MTHeader" Multiplicity="1"
+					Role="FromRole_MTHeaderToCnccMT" />
+				<End Type="ZODATA_MSTT_SP1_SRV.CnccMT" Multiplicity="*"
+					Role="ToRole_MTHeaderToCnccMT" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_MTHeaderToCnccMT">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_MTHeaderToCnccMT">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="MTHeaderToHdMT" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.MTHeader" Multiplicity="1"
+					Role="FromRole_MTHeaderToHdMT" />
+				<End Type="ZODATA_MSTT_SP1_SRV.HdMT" Multiplicity="*" Role="ToRole_MTHeaderToHdMT" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_MTHeaderToHdMT">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_MTHeaderToHdMT">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="TlineHeaderToPRList" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.TlineHeader" Multiplicity="1"
+					Role="FromRole_TlineHeaderToPRList" />
+				<End Type="ZODATA_MSTT_SP1_SRV.PRList" Multiplicity="*"
+					Role="ToRole_TlineHeaderToPRList" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_TlineHeaderToPRList">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_TlineHeaderToPRList">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="TlineHeaderToTline" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.TlineHeader" Multiplicity="1"
+					Role="FromRole_TlineHeaderToTline" />
+				<End Type="ZODATA_MSTT_SP1_SRV.Tline" Multiplicity="*"
+					Role="ToRole_TlineHeaderToTline" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_TlineHeaderToTline">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_TlineHeaderToTline">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="TlineHeaderToHtms" sap:content-version="1">
+				<End Type="ZODATA_MSTT_SP1_SRV.TlineHeader" Multiplicity="1"
+					Role="FromRole_TlineHeaderToHtms" />
+				<End Type="ZODATA_MSTT_SP1_SRV.Htms" Multiplicity="0..1"
+					Role="ToRole_TlineHeaderToHtms" />
+				<ReferentialConstraint>
+					<Principal Role="FromRole_TlineHeaderToHtms">
+						<PropertyRef Name="Magms" />
+					</Principal>
+					<Dependent Role="ToRole_TlineHeaderToHtms">
+						<PropertyRef Name="Magms" />
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZODATA_MSTT_SP1_SRV_Entities" m:IsDefaultEntityContainer="true"
+				sap:supported-formats="atom json xlsx">
+				<EntitySet Name="PRListSet" EntityType="ZODATA_MSTT_SP1_SRV.PRList"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="PRHeaderSet" EntityType="ZODATA_MSTT_SP1_SRV.PRHeader"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+				<EntitySet Name="HtmsMdSet" EntityType="ZODATA_MSTT_SP1_SRV.HtmsMd"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="AttachFileSet" EntityType="ZODATA_MSTT_SP1_SRV.AttachFile"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="InitMTSet" EntityType="ZODATA_MSTT_SP1_SRV.InitMT"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="CddpMTSet" EntityType="ZODATA_MSTT_SP1_SRV.CddpMT"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="Cddp2MTSet" EntityType="ZODATA_MSTT_SP1_SRV.Cddp2MT"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="CnccMTSet" EntityType="ZODATA_MSTT_SP1_SRV.CnccMT"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="HdMTSet" EntityType="ZODATA_MSTT_SP1_SRV.HdMT"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="MTHeaderSet" EntityType="ZODATA_MSTT_SP1_SRV.MTHeader"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+				<EntitySet Name="TlineSet" EntityType="ZODATA_MSTT_SP1_SRV.Tline"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="UploadTempSet" EntityType="ZODATA_MSTT_SP1_SRV.UploadTemp"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+				<EntitySet Name="GMSHeaderSet" EntityType="ZODATA_MSTT_SP1_SRV.GMSHeader"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="MatklListSet" EntityType="ZODATA_MSTT_SP1_SRV.MatklList"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="MeinsListSet" EntityType="ZODATA_MSTT_SP1_SRV.MeinsList"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<EntitySet Name="TlineHeaderSet" EntityType="ZODATA_MSTT_SP1_SRV.TlineHeader"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+				<EntitySet Name="HtmsSet" EntityType="ZODATA_MSTT_SP1_SRV.Htms"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:content-version="1" />
+				<AssociationSet Name="TlineHeaderToTlineSet"
+					Association="ZODATA_MSTT_SP1_SRV.TlineHeaderToTline" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="TlineHeaderSet" Role="FromRole_TlineHeaderToTline" />
+					<End EntitySet="TlineSet" Role="ToRole_TlineHeaderToTline" />
+				</AssociationSet>
+				<AssociationSet Name="MTHeaderToCddp2MTSet"
+					Association="ZODATA_MSTT_SP1_SRV.MTHeaderToCddp2MT" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="MTHeaderSet" Role="FromRole_MTHeaderToCddp2MT" />
+					<End EntitySet="Cddp2MTSet" Role="ToRole_MTHeaderToCddp2MT" />
+				</AssociationSet>
+				<AssociationSet Name="TlineHeaderToHtms_AssocSet"
+					Association="ZODATA_MSTT_SP1_SRV.TlineHeaderToHtms" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="TlineHeaderSet" Role="FromRole_TlineHeaderToHtms" />
+					<End EntitySet="HtmsSet" Role="ToRole_TlineHeaderToHtms" />
+				</AssociationSet>
+				<AssociationSet Name="MTHeaderToCnccMTSet"
+					Association="ZODATA_MSTT_SP1_SRV.MTHeaderToCnccMT" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="MTHeaderSet" Role="FromRole_MTHeaderToCnccMT" />
+					<End EntitySet="CnccMTSet" Role="ToRole_MTHeaderToCnccMT" />
+				</AssociationSet>
+				<AssociationSet Name="TlineHeaderToPRListSet"
+					Association="ZODATA_MSTT_SP1_SRV.TlineHeaderToPRList" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="TlineHeaderSet" Role="FromRole_TlineHeaderToPRList" />
+					<End EntitySet="PRListSet" Role="ToRole_TlineHeaderToPRList" />
+				</AssociationSet>
+				<AssociationSet Name="MTHeaderToCddpMTSet"
+					Association="ZODATA_MSTT_SP1_SRV.MTHeaderToCddpMT" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="MTHeaderSet" Role="FromRole_MTHeaderToCddpMT" />
+					<End EntitySet="CddpMTSet" Role="ToRole_MTHeaderToCddpMT" />
+				</AssociationSet>
+				<AssociationSet Name="MTHeaderToInitMTSet"
+					Association="ZODATA_MSTT_SP1_SRV.MTHeaderToInitMT" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="MTHeaderSet" Role="FromRole_MTHeaderToInitMT" />
+					<End EntitySet="InitMTSet" Role="ToRole_MTHeaderToInitMT" />
+				</AssociationSet>
+				<AssociationSet Name="PRHeaderToPRListSet"
+					Association="ZODATA_MSTT_SP1_SRV.PRHeaderToPRList" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="PRHeaderSet" Role="FromRole_PRHeaderToPRList" />
+					<End EntitySet="PRListSet" Role="ToRole_PRHeaderToPRList" />
+				</AssociationSet>
+				<AssociationSet Name="MTHeaderToHdMTSet"
+					Association="ZODATA_MSTT_SP1_SRV.MTHeaderToHdMT" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="MTHeaderSet" Role="FromRole_MTHeaderToHdMT" />
+					<End EntitySet="HdMTSet" Role="ToRole_MTHeaderToHdMT" />
+				</AssociationSet>
 			</EntityContainer>
+			<Annotation Term="Core.SchemaVersion" String="1.0.0"
+				xmlns="http://docs.oasis-open.org/odata/ns/edm" />
+			<atom:link rel="self"
+				href="http://s4hana.localdomain:8011/sap/opu/odata/sap/ZODATA_MSTT_SP1_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom" />
+			<atom:link rel="latest-version"
+				href="http://s4hana.localdomain:8011/sap/opu/odata/sap/ZODATA_MSTT_SP1_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom" />
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

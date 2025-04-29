@@ -22,8 +22,15 @@ server:
     afterMiddleware: compression
   - name: ui5-middleware-simpleproxy
     afterMiddleware: compression
-    mountPath: /V2
+    mountPath: /sap
     configuration:
-      baseUri: "https://services.odata.org"
+      baseUri: "http://s4hana.localdomain:8011/sap"
   - name: ui5-middleware-livereload
     afterMiddleware: compression
+  - name: fiori-tools-proxy
+    afterMiddleware: compression
+    configuration:
+      ignoreCertError: true,
+      backend:
+      - path: /sap
+        url: http://s4hana.localdomain:8011

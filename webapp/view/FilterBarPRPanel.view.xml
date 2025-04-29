@@ -7,8 +7,15 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar"
     xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:sfm="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    displayBlock="true"
 >
-    <f:DynamicPage headerExpanded="{/headerExpanded}">
+    <f:DynamicPage
+        headerExpanded="{/headerExpanded}"
+        id="dynamicPage"
+        fitContent="true"
+    >
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
@@ -33,7 +40,7 @@
         </f:title>
         <f:header>
             <f:DynamicPageHeader>
-                <f:content>
+                <!-- <f:content>
                     <fb:FilterBar
                         id="filterbar"
                         persistencyKey="myPersKey"
@@ -44,7 +51,7 @@
                     >
                         <fb:filterGroupItems>
                             <fb:FilterGroupItem
-                                name="Name"
+                                name="PRId"
                                 label="Mã PR"
                                 groupName="Group1"
                                 visibleInFilterBar="true"
@@ -54,7 +61,7 @@
                                         name="Name"
                                         selectionChange=".onSelectionChange"
                                         items="{
-												path: '/PRIds',
+												path: '',
 												templateShareable: true
 											}"
                                     >
@@ -66,7 +73,7 @@
                                 </fb:control>
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem
-                                name="Category"
+                                name="MaGMS"
                                 label="Mã gói mua sắm"
                                 groupName="Group1"
                                 visibleInFilterBar="true"
@@ -76,7 +83,7 @@
                                         name="Category"
                                         selectionChange=".onSelectionChange"
                                         items="{
-												path: '/ProductCategories',
+												path: '',
 												templateShareable: true
 											}"
                                     >
@@ -98,7 +105,7 @@
                                         name="SupplierName"
                                         selectionChange=".onSelectionChange"
                                         items="{
-												path: '/ProductSuppliers',
+												path: '',
 												templateShareable: true
 											}"
                                     >
@@ -121,7 +128,7 @@
                                         name="SupplierName"
                                         selectionChange=".onSelectionChange"
                                         items="{
-												path: '/ProductSuppliers',
+												path: '',
 												templateShareable: true
 											}"
                                     >
@@ -144,7 +151,7 @@
                                         name="SupplierName"
                                         selectionChange=".onSelectionChange"
                                         items="{
-												path: '/ProductSuppliers',
+												path: '',
 												templateShareable: true
 											}"
                                     >
@@ -157,15 +164,70 @@
                             </fb:FilterGroupItem>
                         </fb:filterGroupItems>
                     </fb:FilterBar>
-                </f:content>
+                </f:content> -->
+
+                <sfm:SmartFilterBar
+                    id="filterbar"
+                    entitySet="PRListSet"
+                    useToolbar="true"
+                >
+                    <sfm:controlConfiguration>
+                        <sfm:ControlConfiguration
+                            key="Banfn"
+                            label="Mã PR"
+                            visibleInAdvancedArea="true"
+                            controlType="input"
+                            filterType="single"
+                            mandatory="auto"
+                            index="1"
+                        />
+                        <sfm:ControlConfiguration
+                            key="Magms"
+                            label="Mã gói mua sắm"
+                            visibleInAdvancedArea="true"
+                            controlType="input"
+                            filterType="single"
+                            mandatory="auto"
+                            index="2"
+                        />
+                        <sfm:ControlConfiguration
+                            id="Erdat"
+                            key="Erdat"
+                            label="Chọn khoảng thời gian"
+                            visibleInAdvancedArea="true"
+                            controlType="date"
+                            filterType="interval"
+                            mandatory="auto"
+                            index="3"
+                        />
+                        <sfm:ControlConfiguration
+                            key="Ekgrp"
+                            label="Purchasing Group"
+                            visibleInAdvancedArea="true"
+                            mandatory="auto"
+                            index="4"
+                        />
+                        <sfm:ControlConfiguration
+                            key="Status"
+                            label="Sales Order Status"
+                            visibleInAdvancedArea="true"
+                            controlType="dropDownList"
+                            mandatory="auto"
+                            index="5"
+                        />
+                    </sfm:controlConfiguration>
+                    <sfm:layoutData>
+                        <FlexItemData shrinkFactor="0" />
+                    </sfm:layoutData>
+                </sfm:SmartFilterBar>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <Table
+            <!-- <Table
                 id="table"
                 inset="false"
                 items="{
-						path: '/PRCollection'
+						path: '/PRListSet'
 					}"
             >
                 <columns>
@@ -216,17 +278,33 @@
                 <items>
                     <ColumnListItem vAlign="Middle">
                         <cells>
-                            <ObjectIdentifier title="{PRId}" />
-                            <Text text="{Date}" />
-                            <ObjectIdentifier title="{MaGMS}" />
-                            <Text text="{Goods}" />
-                            <Text text="{PRType}" />
-                            <Text text="{Quantity}" />
-                            <Text text="{Unit}" />
+                            <ObjectIdentifier title="{Banfn}" />
+                            <Text text="{Erdat}" />
+                            <ObjectIdentifier title="{Magms}" />
+                            <Text text="{Txz01}" />
+                            <Text text="{Bsart}" />
+                            <Text text="{Bnfpo}" />
+                            <Text text="{Meins}" />
                         </cells>
                     </ColumnListItem>
                 </items>
-            </Table>
+            </Table> -->
+            <smartTable:SmartTable
+                id="smartTable"
+                entitySet="PRListSet"
+                smartFilterId="filterbar"
+                tableType="Table"
+                useTablePersonalisation="true"
+                header="Customer orders"
+                showRowCount="true"
+            >
+                <smartTable:layoutData>
+                    <FlexItemData
+                        growFactor="1"
+                        baseSize="0%"
+                    />
+                </smartTable:layoutData>
+            </smartTable:SmartTable>
         </f:content>
     </f:DynamicPage>
 </mvc:View>

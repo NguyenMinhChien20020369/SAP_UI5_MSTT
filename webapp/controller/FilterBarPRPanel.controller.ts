@@ -12,6 +12,8 @@ import FilterItem from "sap/ui/comp/filterbar/FilterItem";
 import FilterGroupItem from "sap/ui/comp/filterbar/FilterGroupItem";
 import Control from "sap/ui/core/Control";
 import ListBinding from "sap/ui/model/ListBinding";
+import ODataModel from 'sap/ui/model/odata/v2/ODataModel';
+import View from 'sap/ui/core/mvc/View';
 
 interface FilterData {
     groupName: string;
@@ -20,7 +22,7 @@ interface FilterData {
 }
 
 export default class FilterBarPRPanel extends Controller {
-    private oModel: JSONModel | null = null;
+    private oModel: ODataModel | null = null;
     private oSmartVariantManagement: SmartVariantManagement | null = null;
     private oExpandedLabel: Label | null = null;
     private oSnappedLabel: Label | null = null;
@@ -28,10 +30,17 @@ export default class FilterBarPRPanel extends Controller {
     private oTable: Table | null = null;
 
     public onInit(): void {
-        // Initialize JSON model and load data
-        this.oModel = new JSONModel();
-        this.oModel.loadData(sap.ui.require.toUrl("ui5/mstt/localService/mockdata/Model.json"), null, false);
+        this.oModel = this.getOwnerComponent().getModel("odataModel") as ODataModel;
         this.getView()?.setModel(this.oModel);
+
+        this.oModel.read("/PRListSet", {
+            success: (oData: any) => {
+                console.log("Data fetched successfully:", oData);
+            },
+            error: (oError: any) => {
+                console.error("Error fetching data:", oError);
+            }
+        });
 
         // Bind methods to ensure correct 'this' context
         this.applyData = this.applyData.bind(this);
@@ -68,7 +77,10 @@ export default class FilterBarPRPanel extends Controller {
 
     public onExit(): void {
         // Clean up references
-        this.oModel = null;
+        if (this.oModel) {
+            this.oModel.destroy();
+            this.oModel = null;
+        }
         this.oSmartVariantManagement = null;
         this.oExpandedLabel = null;
         this.oSnappedLabel = null;

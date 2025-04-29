@@ -16,8 +16,8 @@
             "version": "1.0.0"
         },
         "dataSources": {
-            "invoiceRemote": {
-                "uri": "V2/Northwind/Northwind.svc/",
+            "ZODATA_MSTT_SP1_SRV": {
+                "uri": "/sap/opu/odata/sap/ZODATA_MSTT_SP1_SRV/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0"
@@ -51,6 +51,9 @@
             "type": "XML",
             "id": "app"
         },
+        "resourceRoots": {
+            "mockserver": "localService"
+        },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
@@ -62,8 +65,12 @@
                     "fallbackLocale": ""
                 }
             },
-            "invoice": {
-                "dataSource": "invoiceRemote"
+            "odataModel": {
+                "dataSource": "ZODATA_MSTT_SP1_SRV",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "useBatch": true
+                }
             }
         },
         "resources": {
